@@ -1,4 +1,5 @@
 import Episodes from './components/episodes'
+import Characters from './components/characters'
 import Header from './components/header'
 import About from './components/about'
 import Menu from './components/menu'
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/characters',
-    element: <><Menu currentHref="/characters"/></>
+    element: <><Menu currentHref="/characters"/><Characters /></>
   },
 ])
 

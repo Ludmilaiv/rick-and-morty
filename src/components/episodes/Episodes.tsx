@@ -73,8 +73,8 @@ function EpisodesView({
       },
     }}
   >
-    <button className="text-2xl fixed top-20 right-20" onClick={closeModal}><span>&#10006;</span></button>
-    <div className="p-5">
+    <button className="text-2xl fixed top-12 right-12 sm:top-20 sm:right-20" onClick={closeModal}><span>&#10006;</span></button>
+    <div className="sm:p-5 p-3">
       <h1 className="text-xl mb-3 text-center text-orange-700">
         <span className="font-bold text-2xl text-orange-600">{currentEpisode?.title}</span>
         <br/>{currentEpisode?.eng_title}

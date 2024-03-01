@@ -1,8 +1,8 @@
-import type { PropsFromRedux } from "./episodePaginationSlice"
+import type { PropsFromRedux } from "./characterPaginationSlice"
 import PaginationView from "../../components/paginationView"
 import { useEffect } from "react"
 
-function EpisodePaginationView({
+function CharacterPaginationView({
   currentPage,
   limit,
   setCurrent,
@@ -19,7 +19,7 @@ function EpisodePaginationView({
 
   useEffect(() => {
     localStorage.setItem(
-      'episode_pagination',
+      'character_pagination',
       JSON.stringify(
         { currentPage, limit }
       ))
@@ -40,4 +40,4 @@ function EpisodePaginationView({
   )
 }
 
-export default EpisodePaginationView
+export default CharacterPaginationView
