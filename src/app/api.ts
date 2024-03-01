@@ -2,7 +2,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { Episodes } from '../components/episodes/type'
 import type { EpisodeFilter } from 'src/features/episodeFilter/type'
 import Search from 'flexsearch'
-import moment from 'moment'
 import { EpisodePagination } from 'src/features/episodePagination/type'
 
 const api = createApi({
@@ -31,16 +30,16 @@ const api = createApi({
           } = arg
           const episodes = response.episodes.filter((episode) => {
             const index = new Search.Index();
+            const episodeDate = new Date(episode.date.split('.').reverse().join('-'))
+            const start = dateStart ? new Date(dateStart) : null
+            const end = dateEnd ? new Date(dateEnd) : null
+            console.log(start, dateStart)
             if (inTitle) index.add(1, episode.title + ' ' + episode.eng_title)
             if (inDescription) index.add(2, episode.description.join('\n'))
             const forText = !text || (!inTitle && !inDescription) || index.search(text).length
             const forSasone = !season || episode.season === season
-            const forDateStart = !dateStart || 
-              moment(episode.date).isAfter(dateStart) || 
-              moment(episode.date).isSame(dateStart)
-            const forDateEnd = !dateEnd || 
-              moment(episode.date).isBefore(dateEnd) ||
-              moment(episode.date).isSame(dateEnd)
+            const forDateStart = !start || episodeDate >= start
+            const forDateEnd = !end || episodeDate <= end
             return forSasone && forDateStart && forDateEnd && forText
           })
           const start = currentPage * limit

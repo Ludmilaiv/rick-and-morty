@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { connect, ConnectedProps } from 'react-redux'
-import moment from "moment"
 import { RootState } from '@app/store'
 import type { EpisodeFilter } from './type'
 
@@ -31,11 +30,11 @@ export const episodeFilterSlice = createSlice({
       state.season = seasone
     },
     setStartDate: (state, action) => {
-      const date = action.payload ? moment(action.payload).format('YYYY-MM-DD') : null
+      const date = action.payload ? action.payload.split('.').reverse().join('-') : null
       state.dateStart = date
     },
     setEndDate: (state, action) => {
-      const date = action.payload ? moment(action.payload).format('YYYY-MM-DD') : null
+      const date = action.payload ? action.payload.split('.').reverse().join('-') : null
       state.dateEnd = date
     }
   },
