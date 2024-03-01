@@ -7,6 +7,7 @@ import EpisodesPaginationView from '../../features/episodePagination'
 import type { ResponseEpisodes } from './type'
 import type { RootState } from '@app/store'
 import { useSelector } from 'react-redux'
+import Spinner from '../spinner'
 
 function EpisodesView({
   text,
@@ -75,7 +76,7 @@ function EpisodesView({
             </tr>
           </thead>
           <tbody className="bg-orange-50">
-            {episodesList}
+            {isLoading ? <tr><td colSpan={3}><Spinner /></td></tr> : error ? "" : episodesList}
           </tbody>
         </table>
       </div>
