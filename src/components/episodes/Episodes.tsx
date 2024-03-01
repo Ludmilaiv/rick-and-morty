@@ -84,7 +84,7 @@ function EpisodesView({
       <p><span className="font-bold text-[#07074D]">Режиссёр: </span>{currentEpisode?.director}</p>
       <p><span className="font-bold text-[#07074D]">Автор сценария: </span>{currentEpisode?.written_by}</p>
       <h2 className="text-lg font-bold mb-2 mt-3 text-[#07074D]">Описание серии</h2>
-      {currentEpisode?.description.map((paragraph) => <p className="mb-2">{paragraph}</p>)}
+      {currentEpisode?.description.map((paragraph, i) => <p key={`p${i}`} className="mb-2">{paragraph}</p>)}
     </div>
     
   </Modal>
