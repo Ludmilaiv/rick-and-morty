@@ -12,8 +12,18 @@ function EpisodePaginationView({
 }: PropsFromRedux & {length: number | undefined}) {
 
   useEffect(() => {
-    setCurrent(0)
+    if (length && currentPage > Math.ceil(length / limit)) {
+      setCurrent(0)
+    }  
   }, [length])
+
+  useEffect(() => {
+    localStorage.setItem(
+      'episode_pagination',
+      JSON.stringify(
+        { currentPage, limit }
+      ))
+  }, [currentPage, limit])
 
   const pagesCount = length ? Math.ceil(length / limit) : 0
   

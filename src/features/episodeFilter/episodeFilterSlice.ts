@@ -3,14 +3,18 @@ import { connect, ConnectedProps } from 'react-redux'
 import { RootState } from '@app/store'
 import type { EpisodeFilter } from './type'
 
-const initialState: EpisodeFilter = {
-  text: '',
-  inTitle: true,
-  inDescription: false,
-  season: null,
-  dateStart: null,
-  dateEnd: null,
-};
+const storage = localStorage.getItem('episode_filter')
+
+const initialState: EpisodeFilter = storage ? 
+  JSON.parse(storage) : 
+  {
+    text: '',
+    inTitle: true,
+    inDescription: false,
+    season: null,
+    dateStart: null,
+    dateEnd: null,
+  }
 
 export const episodeFilterSlice = createSlice({
   name: 'episodes',

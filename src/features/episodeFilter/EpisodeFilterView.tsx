@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import type { PropsFromRedux } from "./episodeFilterSlice"
 
 function EpisodeFilterView({
@@ -18,6 +18,14 @@ function EpisodeFilterView({
 
   const [textValue, setTextValue] = useState(text)
   const [inputTimeout, setInputTimeout] = useState<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    localStorage.setItem(
+      'episode_filter',
+      JSON.stringify(
+        { text, inTitle, inDescription, season, dateStart, dateEnd }
+      ))
+  }, [text, inTitle, inDescription, season, dateStart, dateEnd])
 
   const inputText = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextValue(e.target.value)

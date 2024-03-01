@@ -3,7 +3,9 @@ import { connect, ConnectedProps } from 'react-redux'
 import { RootState } from '@app/store'
 import type { EpisodePagination } from './type'
 
-const initialState: EpisodePagination = {
+const storage = localStorage.getItem('episode_pagination')
+
+const initialState: EpisodePagination = storage ? JSON.parse(storage) : {
   currentPage: 0,
   limit: 5
 };
