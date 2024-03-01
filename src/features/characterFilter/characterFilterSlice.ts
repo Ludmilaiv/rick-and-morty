@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { connect, ConnectedProps } from 'react-redux'
-import { RootState } from '@app/store'
+import { RootState } from '../../app/store'
 import type { CharacterFilter } from './type'
 
 const storage = localStorage.getItem('character_filter')
@@ -38,6 +38,8 @@ const mapDispatchToProps = {
 }
 
 export const connector = connect(mapStateToProps, mapDispatchToProps)
+
+export const setText = (data: string) => (characterFilterSlice.actions.setText(data))
 
 export default characterFilterSlice.reducer
 

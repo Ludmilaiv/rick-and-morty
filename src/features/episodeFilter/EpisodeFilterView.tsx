@@ -37,7 +37,8 @@ function EpisodeFilterView({
     <div className="bg-amber-50 shadow-lg rounded-lg sm:overflow-hidden overflow-x-auto mx-4 md:mx-auto min-h-40 mb-5 pt-5 pb-5">
       <div className="mx-4 md:mx-auto md:w-2/3 flex flex-wrap md:flex-nowrap justify-between">
         <div className="md:basis-1/2 basis-full md:mr-3">
-          <input type="text"
+          <input 
+            type="text"
             value={textValue}
             placeholder="Поиск по словам"
             onChange={inputText}
@@ -46,6 +47,7 @@ function EpisodeFilterView({
 
           <div className="mt-2">
             <input
+              role="in-title"
               type="checkbox"
               id="in-title"
               checked={inTitle}
@@ -57,6 +59,7 @@ function EpisodeFilterView({
 
           <div className="mt-2">
             <input
+              role="in-description"
               type="checkbox"
               id="in-desk"
               checked={inDescription}
@@ -87,6 +90,7 @@ function EpisodeFilterView({
           </div>
 
           <select
+            role="season"
             value={season || 0}
             onChange={(e) => setSeasone(+e.target.value)}
             className="w-full mt-2 rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"

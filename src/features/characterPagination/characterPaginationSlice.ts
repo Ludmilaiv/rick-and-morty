@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { connect, ConnectedProps } from 'react-redux'
-import { RootState } from '@app/store'
+import { RootState } from '../../app/store'
 import type { CharacterPagination } from './type'
 
 const storage = localStorage.getItem('character_pagination')
@@ -37,8 +37,5 @@ const mapDispatchToProps = {
 export const connector = connect(mapStateToProps, mapDispatchToProps)
 
 export default characterPaginationSlice.reducer
-
-export const setCurrent = (data: number) => 
-  (characterPaginationSlice.actions.setCurrent(data))
 
 export type PropsFromRedux = ConnectedProps<typeof connector>

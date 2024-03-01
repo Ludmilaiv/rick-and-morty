@@ -1,11 +1,11 @@
-import api from '@app/api'
+import api from '../../app/api'
 import EpisodeFilterView from '../../features/episodeFilter'
 import type { PropsFromRedux } from "../../features/episodeFilter/episodeFilterSlice"
 import { useEffect, useState } from 'react'
 import { EpisodeFilter } from '../../features/episodeFilter/type'
 import EpisodesPaginationView from '../../features/episodePagination'
 import type { ResponseEpisodes, Episode } from './type'
-import type { RootState } from '@app/store'
+import type { RootState } from '../../app/store'
 import { useSelector } from 'react-redux'
 import Spinner from '../spinner'
 import Modal from 'react-modal'

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { connect, ConnectedProps } from 'react-redux'
-import { RootState } from '@app/store'
+import { RootState } from '../../app/store'
 import type { EpisodePagination } from './type'
 
 const storage = localStorage.getItem('episode_pagination')
