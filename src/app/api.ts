@@ -33,7 +33,6 @@ const api = createApi({
             const episodeDate = new Date(episode.date.split('.').reverse().join('-'))
             const start = dateStart ? new Date(dateStart) : null
             const end = dateEnd ? new Date(dateEnd) : null
-            console.log(start, dateStart)
             if (inTitle) index.add(1, episode.title + ' ' + episode.eng_title)
             if (inDescription) index.add(2, episode.description.join('\n'))
             const forText = !text || (!inTitle && !inDescription) || index.search(text).length
