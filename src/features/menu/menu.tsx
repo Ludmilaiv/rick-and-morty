@@ -1,13 +1,21 @@
 import classNames from 'classnames'
-import type { MenuProps } from './type'
+import type { PropsFromRedux } from "./menuSlice"
+import { useEffect } from 'react'
 
 const menuItems = [
-  { key: "m-1", caption: "О мультсериале", href: "/" },
-  { key: "m-2", caption: "Эпизоды", href: "/episodes" },
-  { key: "m-3", caption: "Персонажи", href: "/characters" },
+  { key: "m-1", caption: "О мультсериале", href: "about" },
+  { key: "m-2", caption: "Эпизоды", href: "episodes" },
+  { key: "m-3", caption: "Персонажи", href: "characters" },
 ]
 
-function Menu({ currentHref }: MenuProps) {
+function Menu({ currentHref, setCurrentHref }: PropsFromRedux) {
+  useEffect(() => {
+    localStorage.setItem(
+      'current_href',
+      JSON.stringify(
+        { currentHref }
+      ))
+  }, [currentHref])
 
   return (
     <nav
@@ -23,6 +31,7 @@ function Menu({ currentHref }: MenuProps) {
             data-te-navbar-nav-ref>
             {menuItems.map((item) => <li key={item.key} className="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
               <a
+                onClick={(e) => {e.preventDefault(); setCurrentHref(item.href)}}
                 className={classNames({
                   "block transition duration-150 ease-in-out focus:text-neutral-700 disabled:text-black/30 lg:p-2 [&.active]:text-black/90": true,
                   "hover:text-neutral-800": item.href !== currentHref,

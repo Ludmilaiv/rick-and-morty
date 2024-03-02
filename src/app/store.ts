@@ -3,6 +3,7 @@ import episodeFilterReducer from '../features/episodeFilter/episodeFilterSlice'
 import episodePaginationReducer from '../features/episodePagination/episodePaginationSlice' 
 import characterFilterReducer from '../features/characterFilter/characterFilterSlice'
 import characterPaginationReducer from '../features/characterPagination/characterPaginationSlice' 
+import menuReducer from '../features/menu/menuSlice' 
 import api from './api'
 
 export const store = configureStore({
@@ -12,6 +13,7 @@ export const store = configureStore({
     episodePagination: episodePaginationReducer,
     characterFilter: characterFilterReducer,
     characterPagination: characterPaginationReducer,
+    menu: menuReducer,
   },
   middleware: (getDefaultMiddleware) => 
     getDefaultMiddleware({}).concat([api.middleware]),
