@@ -16,7 +16,7 @@ const api = createApi({
   endpoints: (build) => ({
     findEpisodes:
       build.query<Episodes | { episodes: Episodes, count: number }, EpisodeFilter & EpisodePagination>({
-        query: (_) => ({ url: 'https://github.com/Ludmilaiv/rick-and-morty/blob/main/public/db.json' }),
+        query: (_) => ({ url: '/db.json' }),
         transformResponse: (
           response: { episodes: Episodes }, _, arg
         ) => {
@@ -56,7 +56,7 @@ const api = createApi({
       }),
     findCharacters:
       build.query<Characters | { characters: Characters, count: number }, CharacterFilter & CharacterPagination>({
-        query: (_) => ({ url: 'https://github.com/Ludmilaiv/rick-and-morty/blob/main/public/db.json' }),
+        query: (_) => ({ url: '/db.json' }),
         transformResponse: (
           response: { characters: Characters }, _, arg
         ) => {
